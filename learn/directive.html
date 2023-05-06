@@ -48,7 +48,7 @@
          <label><input type="checkbox" value="NuxtJs" v-model="framework">NuxtJs</label>
       </div>
       <h3>{{ namaLengkap }}</h3>
-      <p>{{ framework }}</p>
+      {{ framework.forEach((ele) => <p> ele</p>)}}
    </div>
 
    <script src="../node_modules/vue/dist/vue.global.js"></script>

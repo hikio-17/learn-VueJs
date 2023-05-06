@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>V-For</title>
+</head>
+<body>
+   <div id="app">
+         <h3> Slect Your Skill</h3>
+         <div>
+            <label><input type="checkbox" value="Css" v-model="skill">Css</label>
+            <label><input type="checkbox" value="HTML" v-model="skill">HTML</label>
+            <label><input type="checkbox" value="Javascript" v-model="skill">Javascript</label>
+            <label><input type="checkbox" value="Bootstrap" v-model="skill">Bootstrap</label>
+            <label><input type="checkbox" value="ReactJs" v-model="skill">ReactJs</label>
+            <label><input type="checkbox" value="VueJs" v-model="skill">VueJs</label>
+            <label><input type="checkbox" value="NextJs" v-model="skill">NextJs</label>
+            <label><input type="checkbox" value="NuxtJs" v-model="skill">NuxtJs</label>
+         </div>
+         <hr>
+         <h5>Your Skill</h5>
+         <ol>
+            <li v-for="item of skill" v-text="item"></li>
+         </ol>
+   </div>
+   
+   <script src="../node_modules//vue/dist/vue.global.js"></script>
+   <script>
+      const app = Vue.createApp({
+         data() {
+            return {
+               skill: []
+            }
+         }
+      })
+      app.mount("#app")
+   </script>
+</body>
+</html>
