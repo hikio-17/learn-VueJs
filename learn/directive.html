@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Directive</title>
+
+   <style>
+      button {
+         margin-left: 5px;
+      }
+      .active {
+         background-color: greenyellow;
+      }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <h5>Directive v-text</h5>
+      <!-- Directive Binding -->
+      <p v-text="name"></p>
+      <p v-text="age*3"></p>
+      <hr>
+      <!-- Directive v-html -->
+      <h5>Directive v-html</h5>
+      <p v-html="link"></p>
+      <hr>
+      <!-- Directive v-bind -->
+      <h5>Directive v-bind:atr manipulasi atribut html</h5>
+      <p v-text="alamat" v-bind:style="{ color: 'blue' }"></p>
+      <hr>
+      <h5>Directive v-on events</h5>
+      <button @click="handleClickMinus">-</button> <span>{{ counter }}</span> <button @click="handleClickPlus">+</button>
+      <hr>
+      <!-- Class Binding v-bind:class -->
+      <h5>Class Binding v-bind:class</h5>
+      <button v-bind:class="{ active: menu === 'home'}" @click="menu='home'">Home</button>
+      <button v-bind:class="{ active: menu ===  'about'}" @click="menu ='about'">About</button>
+      <button v-bind:class="{ active: menu === 'contact'}" @click="menu = 'contact'">Contact</button>
+      <hr>
+      <h5>Directive v-model two way data binding</h5>
+      <input type="text" v-model="namaLengkap">
+      <div>
+         <h6>Framework</h6>
+         <label><input type="checkbox" value="reactJs" v-model="framework">ReactJs</label>
+         <label><input type="checkbox" value="vueJs" v-model="framework">VueJs</label>
+         <label><input type="checkbox" value="NuxtJs" v-model="framework">NuxtJs</label>
+      </div>
+      <h3>{{ namaLengkap }}</h3>
+      <p>{{ framework }}</p>
+   </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script>
+      const app = Vue.createApp({
+         data() {
+            return {
+               namaLengkap: '',
+               framework: [],
+               counter: 0,
+               name: "Fajri Muhammad Tio",
+               link: "<a href='#'>Klik link berikut ini</a>",
+               age: 23,
+               alamat: "Kota Sungai Penuh",
+               menu: 'home',
+            }
+         },
+         methods: {
+            handleClickPlus() {
+               this.counter++;
+            },
+            handleClickMinus() {
+               this.counter--;
+            },
+         },
+      })
+
+      app.mount("#app")
+   </script>
+</body>
+</html>

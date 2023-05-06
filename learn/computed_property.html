@@ -10,7 +10,8 @@
    <div id="app">
       <h3>Masukkan bilangan untuk chek apakah bilangan ganjil/genap</h3>
       <input type="number" v-model="number">
-      <p>Bilangan ini adalah {{ checkValue }}</p>
+      <p>Bilangan ini adalah {{ infoBilangan }}</p>
+      <h1 v-text="number"></h1>
    </div>
    <script src="../node_modules/vue/dist/vue.global.js"></script>
    <script>
@@ -21,7 +22,7 @@
             }
          },
          computed: {
-            checkValue() {
+            infoBilangan() {
               return this.number === null ? "" : this.number % 2 === 0 ? 'Genap' : "Ganjil";
             }
          }
