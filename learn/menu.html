@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Main Menu</title>
+
+   <style>
+      .container {
+         width: 400px;
+         margin: 0 auto;
+      }
+
+      ul {
+         display: flex;
+         justify-content: space-between;
+         list-style: none;
+      }
+
+      ul li {
+         background-color: brown;
+         width: 100%;
+         text-align: center;
+         padding: 15px;
+         border-radius: 20px;
+      }
+      
+      ul li a{
+         text-decoration: none;
+         color: #fff;
+      }
+
+      .active {
+         background-color: burlywood;
+      }
+   </style>
+</head>
+<body>
+   <div id="app">
+      <div class="container">
+         <ul>
+            <li v-bind:class="{active: menu === 'home' }"><a href="#" @click="handleClickMenu('home', $event)">Home</a></li>
+            <li v-bind:class="{active: menu === 'about' }"><a href="#" @click="handleClickMenu('about', $event)">About</a></li>
+            <li v-bind:class="{ active: menu === 'contact'}"><a href="#" @click="handleClickMenu('contact', $event)">Contact</a></li>
+            <li v-bind:class="{active: menu === 'blog' }"><a href="#" @click="handleClickMenu('blog', $event)">Blog</a></li>
+         </ul>
+      </div>
+   </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script>
+      const app = Vue.createApp({
+         data() {
+            return {
+               menu: 'home'
+            }
+         },
+         methods: {
+            handleClickMenu(menu, event) {
+               event.preventDefault();
+               this.menu = menu;
+            }
+         }
+      });
+
+      app.mount("#app");
+   </script>
+</body>
+</html>
