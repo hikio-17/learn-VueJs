@@ -46,10 +46,9 @@
             <li v-bind:class="{active: menu === 'blog' }"><a href="#" @click.prevent="handleClickMenu('blog')">Blog</a></li>
          </ul>
       </div>
-
       <div>
          <h3>Add your tod list</h3>
-         <input type="text" @keyup.enter="handleSubmit">
+         <input type="text" @keyup.enter="handleSubmit" v-model="addTodo">
          <br><br>
          <hr>
          <template v-if="listTodo.length > 0">
@@ -59,6 +58,7 @@
             </ol>
          </template>
          <h4 v-else>not todo daily</h4>
+         <button @click="handleReset">Clear Todo</button>
       </div>
    </div>
 
@@ -68,6 +68,7 @@
          data() {
             return {
                menu: 'home',
+               addTodo: '',
                listTodo: []
             }
          },
@@ -75,9 +76,12 @@
             handleClickMenu(menu) {
                this.menu = menu;
             },
-            handleSubmit(event) {
-               this.listTodo.push(event.target.value);
-               event.target.value = "";
+            handleSubmit() {
+               this.listTodo.push(this.addTodo);
+               this.addTodo = '';
+            },
+            handleReset() {
+               this.listTodo = [];
             }
          }
       });

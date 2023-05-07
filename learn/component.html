@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Component</title>
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+      html, body {
+         height: 100%;
+         width: 100%;
+      }
+      #app {
+         width: 100%;
+         height: 100%;
+      }
+      header {
+         height: 20%;
+         background-color: aqua;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      main {
+         display: flex;
+         gap: 5%;
+         width: 100%;
+         height: 70%;
+      }
+      main .left, .right {
+         width: 100%;
+         background-color: bisque;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      footer {
+         height: 10%;
+         background-color: brown;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         color: white;
+      }
+   </style>
+</head>
+<body>
+  <div id="app">
+   <header-component /></header-component>
+   <main-component></main-component>
+   <footer-component></footer-component>
+  </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script>
+      const app = Vue.createApp({});
+
+      app.component('header-component', {
+         data() {
+            return {
+               content: 'Bagian Header'
+            }
+         },
+         template: `
+            <header>
+               <h3 v-text="content"></h3>
+            </header>
+         `
+      });
+
+      app.component('main-component', {
+         data() {
+            return {
+               content: 'Left'
+            }
+         },
+         template: `
+            <main>
+               <div class="left">
+                  <h3 v-text="content"></h3>
+               </div>
+               <div class="right">
+                  <h3>Right</h3>
+               </div>
+          </main>
+         `
+      });
+
+      app.component('footer-component', {
+         template: `
+            <footer>
+               <h3>Bagian Footer</h3>
+            </footer>
+         `
+      });
+
+      app.mount('#app');
+   </script>
+</body>
+</html>
