@@ -1,52 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Directive v-for-ef-els</title>
-</head>
-<style>
-   * {
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Directive v-for-ef-els</title>
+  </head>
+  <style>
+    * {
       box-sizing: border-box;
-   }
-   .container {
+    }
+    .container {
       width: 450px;
       margin: 0 auto;
-   }
-</style>
-<body>
-   <div class="container">
+    }
+  </style>
+  <body>
+    <div class="container">
       <h2>Silahkan pilih makanan favori anda</h2>
-      <label><input type="checkbox" value="Nasi Goreng" v-model="foods">Nasi Goreng</label>
-      <label><input type="checkbox" value="Gado-gado" v-model="foods">Gado-gado</label>
-      <label><input type="checkbox" value="Pecal Ayam" v-model="foods">Pecal Ayam</label>
-      <label><input type="checkbox" value="Nasi Gemuk" v-model="foods">Nasi Gemuk</label>
-      <label><input type="checkbox" value="Nasi Padang" v-model="foods">Nasi Padang</label>
-      <label><input type="checkbox" value="Bakso" v-model="foods">Bakso</label>
-      <label><input type="checkbox" value="Mie Ayam" v-model="foods">Mie Ayam</label>
-      <label><input type="checkbox" value="Warteg" v-model="foods">Warteg</label>
-      <br>
-      <br>
-      <hr>
-      <h3>Makanan Favorit anda</h3>
-      <ul v-if="foods.length >= 1">
-         <li v-for="(item, index) of foods" v-text="item"></li>
-      </ul>
+      <label
+        ><input type="checkbox" value="Nasi Goreng" v-model="foods" />Nasi
+        Goreng</label
+      >
+      <label
+        ><input
+          type="checkbox"
+          value="Gado-gado"
+          v-model="foods"
+        />Gado-gado</label
+      >
+      <label
+        ><input type="checkbox" value="Pecal Ayam" v-model="foods" />Pecal
+        Ayam</label
+      >
+      <label
+        ><input type="checkbox" value="Nasi Gemuk" v-model="foods" />Nasi
+        Gemuk</label
+      >
+      <label
+        ><input type="checkbox" value="Nasi Padang" v-model="foods" />Nasi
+        Padang</label
+      >
+      <label
+        ><input type="checkbox" value="Bakso" v-model="foods" />Bakso</label
+      >
+      <label
+        ><input type="checkbox" value="Mie Ayam" v-model="foods" />Mie
+        Ayam</label
+      >
+      <label
+        ><input type="checkbox" value="Warteg" v-model="foods" />Warteg</label
+      >
+      <br />
+      <br />
+      <hr />
+      <template v-if="foods.length > 0">
+        <h3>Makanan Favorit anda</h3>
+        <ul>
+          <li v-for="(item, index) of foods" v-text="item"></li>
+        </ul>
+      </template>
       <!-- <div></div> -->
-      <li v-else>Makanan Favorit anda belum tersedia</li>
-   </div>
+      <h3 v-else>Makanan Favorit anda belum tersedia</h3>
+    </div>
 
-   <script src="../node_modules/vue/dist/vue.global.js"></script>
-   <script>
+    <script src="../node_modules/vue/dist/vue.global.js"></script>
+    <script>
       const container = Vue.createApp({
-         data() {
-            return {
-               foods: []
-            }
-         }
+        data() {
+          return {
+            foods: []
+          }
+        }
       })
-      container.mount(".container");
-   </script>
-</body>
+      container.mount('.container')
+    </script>
+  </body>
 </html>
