@@ -40,10 +40,10 @@
    <div id="app">
       <div class="container">
          <ul>
-            <li v-bind:class="{active: menu === 'home' }"><a href="#" @click="handleClickMenu('home', $event)">Home</a></li>
-            <li v-bind:class="{active: menu === 'about' }"><a href="#" @click="handleClickMenu('about', $event)">About</a></li>
-            <li v-bind:class="{ active: menu === 'contact'}"><a href="#" @click="handleClickMenu('contact', $event)">Contact</a></li>
-            <li v-bind:class="{active: menu === 'blog' }"><a href="#" @click="handleClickMenu('blog', $event)">Blog</a></li>
+            <li v-bind:class="{active: menu === 'home' }"><a href="#" @click.prevent="handleClickMenu('home')">Home</a></li>
+            <li v-bind:class="{active: menu === 'about' }"><a href="#" @click.prevent="handleClickMenu('about')">About</a></li>
+            <li v-bind:class="{ active: menu === 'contact'}"><a href="#" @click.prevent="handleClickMenu('contact')">Contact</a></li>
+            <li v-bind:class="{active: menu === 'blog' }"><a href="#" @click.prevent="handleClickMenu('blog')">Blog</a></li>
          </ul>
       </div>
    </div>
@@ -57,8 +57,7 @@
             }
          },
          methods: {
-            handleClickMenu(menu, event) {
-               event.preventDefault();
+            handleClickMenu(menu) {
                this.menu = menu;
             }
          }
