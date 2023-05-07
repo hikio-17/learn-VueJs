@@ -46,6 +46,20 @@
             <li v-bind:class="{active: menu === 'blog' }"><a href="#" @click.prevent="handleClickMenu('blog')">Blog</a></li>
          </ul>
       </div>
+
+      <div>
+         <h3>Add your tod list</h3>
+         <input type="text" @keyup.enter="handleSubmit">
+         <br><br>
+         <hr>
+         <template v-if="listTodo.length > 0">
+            <h4>Yor todo daily now</h4>
+            <ol>
+               <li v-for="item in listTodo" v-text="item"></li>
+            </ol>
+         </template>
+         <h4 v-else>not todo daily</h4>
+      </div>
    </div>
 
    <script src="../node_modules/vue/dist/vue.global.js"></script>
@@ -53,12 +67,17 @@
       const app = Vue.createApp({
          data() {
             return {
-               menu: 'home'
+               menu: 'home',
+               listTodo: []
             }
          },
          methods: {
             handleClickMenu(menu) {
                this.menu = menu;
+            },
+            handleSubmit(event) {
+               this.listTodo.push(event.target.value);
+               event.target.value = "";
             }
          }
       });
