@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Props</title>
+</head>
+<body>
+   <div id="app">
+      <header-component></header-component>
+      <biodata :name="name" :age="age"></biodata>
+      <hr><hr>
+      <skill :skills="skills"></skill>
+   </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script>
+      const HeaderComponent = {
+         template: `
+            <h1>Belajar Props dan Component VueJs</h1>
+         `
+      }
+      const app = Vue.createApp({
+         components: {
+           'header-component':HeaderComponent,    
+         },
+         data() {
+            return {
+               name: "Fajri Muhammad Tio",
+               age: 23,
+               skills: ["Javascript", "MongoDB", "ExpressJs", "ReactJs", "NodeJs", "MySQL", "PostgreSQL", "VueJs", "NuxtJs", "NextJs"]
+            }
+         }
+      });
+
+      app.component('biodata', {
+         props: ['name', 'age'],
+         template: `
+            <h3>My Biodata</h3>
+            <p>Nama: {{ name }}</p>
+            <p>Age: {{ age }}</p>
+         `
+      });
+
+      app.component('skill', {
+         props: ['skills'],
+         template: `
+            <ol>
+               <li v-for="item of skills" v-text="item"></li>   
+            </ol>
+         `
+      });
+
+      app.mount('#app');
+   </script>
+</body>
+</html>

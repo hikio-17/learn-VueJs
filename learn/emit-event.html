@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <div id="app">
+      <kelas :kelas="kelas" @submit="handleSubmit" @remove="handleRemove"></kelas>
+   </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script>
+      const Kelas = {
+         props: ['kelas'],
+         template: `
+            <div>
+               <template v-if="kelas.length">
+                  <h2>Daftar Kelas ({{ kelas.length }})</h2>
+                  <ol>
+                     <li v-for="(item, index) of kelas">{{item}} <a href="#" @click.prevent="$emit('remove', index)">hapus</a></li>
+                  </ol>
+               </template>
+               <h2 v-else>Kelas Belum tersedia</h2>
+               <br><br>
+               <hr>
+               <h2>Tambahkan Kelas baru</h2>
+               <input type="text" @keyup.enter="$emit('submit', $event)"/>
+            </div>
+         `,
+      }
+
+      const app = Vue.createApp({
+         components: {
+            'kelas': Kelas
+         },
+         data() {
+            return {
+               kelas: ["Javascript", "Pyton"]
+            }
+         },
+         methods: {
+            handleSubmit(e) {
+               this.kelas.push(e.target.value);
+               e.target.value = "";
+            },
+            handleRemove(index) {
+               this.kelas.splice(index, 1);
+            }
+
+         }
+      });
+
+      app.mount("#app")
+   </script>
+</body>
+</html>
