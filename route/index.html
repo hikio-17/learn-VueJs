@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Todo List</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div id="app">
+      <header>
+         <Navigasi :menu="menu" @active="activeMenu" />
+      </header>
+      <main>
+         <div class="main-content">
+            <router-view 
+               :todos="todos" 
+               @submit="handleSubmit" 
+               @remove="handleRemove">
+            </router-view>
+         </div>
+         <div class="sidebar">
+            <h3>sidebar</h3>
+            <img src="gambar.jpg" alt="">
+         </div>
+      </main>
+      <footer>
+         <h4>Learn VueJs 2023</h4>
+      </footer>
+   </div>
+
+   <script src="../node_modules/vue/dist/vue.global.js"></script>
+   <script src="../node_modules/vue-router/dist/vue-router.global.js"></script>
+   <script src="./app.js" type="module"></script>
+</body>
+</html>

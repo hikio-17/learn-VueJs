@@ -8,7 +8,21 @@
 </head>
 <body>
    <div id="app">
-      <kelas :kelas="kelas" @submit="handleSubmit" @remove="handleRemove"></kelas>
+      <header>
+         <nav>
+            <a href="">Home</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+         </nav>
+      </header>
+
+      <main>
+         <kelas :kelas="kelas" @submit="handleSubmit" @remove="handleRemove"></kelas>
+      </main>
+
+      <footer>
+         
+      </footer>
    </div>
 
    <script src="../node_modules/vue/dist/vue.global.js"></script>
@@ -23,7 +37,7 @@
                      <li v-for="(item, index) of kelas">{{item}} <a href="#" @click.prevent="$emit('remove', index)">hapus</a></li>
                   </ol>
                </template>
-               <h2 v-else>Kelas Belum tersedia</h2>
+               <h2 v-else>Kelas Belum tersedia</h2>=
                <br><br>
                <hr>
                <h2>Tambahkan Kelas baru</h2>
